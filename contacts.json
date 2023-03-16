@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "name": "Susan Abraham",
+        "address": "Bandung, Jawa Barat"
+    },
+    {
+        "id": 2,
+        "name": "Surya William",
+        "address": "Bogor, Jawa Barat"
+    },
+    {
+        "id": 3,
+        "name": "Shaeron Lee",
+        "address": "Cirebon, Jawa Barat"
+    }]
