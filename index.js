@@ -15,67 +15,67 @@ const server = Hapi.server({
 
 server.route({
     method: 'GET',
-    path: '/books',
+    path: '/contacts',
     options: {
         handler: async (request, h) => {
-            const books = await readFile('./books.json', 'utf8');
-            return h.response(JSON.parse(books));
+            const contacts = await readFile('./contacts.json', 'utf8');
+            return h.response(JSON.parse(contacts));
         }
     }
 });
 
 server.route({
     method: 'POST',
-    path: '/books',
+    path: '/contacts',
     options: {
         handler: async (request, h) => {
-            const book = JSON.parse(request.payload);
-            let books = await readFile('./books.json', 'utf8');
-            books = JSON.parse(books);
+            const contact = JSON.parse(request.payload);
+            let contacts = await readFile('./contacts.json', 'utf8');
+            contacts = JSON.parse(contacts);
             // setting id
-            book.id = books.length + 1;
-            books.push(book);
-            await writeFile('./books.json', JSON.stringify(books, null, 2), 'utf8');
-            return h.response(books).code(200);
+            contact.id = contacts.length + 1;
+            contacts.push(contact);
+            await writeFile('./contacts.json', JSON.stringify(contacts, null, 2), 'utf8');
+            return h.response(contacts).code(200);
         }
     }
 });
 
 server.route({
     method: 'PUT',
-    path: '/books/{id}',
+    path: '/contacts/{id}',
     options: {
         handler: async (request, h) => {
-            const updBook = JSON.parse(request.payload);
+            const updContact = JSON.parse(request.payload);
             const id = request.params.id;
-            let books = await readFile('./books.json', 'utf8');
-            books = JSON.parse(books);
-            // finding book by id and rewriting
-            books.forEach((book) => {
-                if (book.id == id) {
-                    book.title = updBook.title;
-                    book.author = updBook.author;
+            let contacts = await readFile('./contacts.json', 'utf8');
+            contacts = JSON.parse(contacts);
+            // finding contact by id and rewriting
+            contacts.forEach((contact) => {
+                if (contact.id == id) {
+                    contact.address = updContact.address;
+                    contact.name = updContact.name;
                 }
             });
-            await writeFile('./books.json', JSON.stringify(books, null, 2), 'utf8');
-            return h.response(books).code(200);
+            await writeFile('./contacts.json', JSON.stringify(contacts, null, 2), 'utf8');
+            return h.response(contacts).code(200);
         }
     }
 });
 
 server.route({
     method: 'DELETE',
-    path: '/books/{id}',
+    path: '/contacts/{id}',
     options: {
         handler: async (request, h) => {
-            const updBook = JSON.parse(request.payload);
+            const updContact = JSON.parse(request.payload);
             const id = request.params.id;
-            let books = await readFile('./books.json', 'utf8');
-            books = JSON.parse(books);
-            // rewriting the books array
-            books = books.filter(book => book.id != id);
-            await writeFile('./books.json', JSON.stringify(books, null, 2), 'utf8');
-            return h.response(books).code(200);
+            let contacts = await readFile('./contacts.json', 'utf8');
+            contacts = JSON.parse(contacts);
+            // rewriting the contacts array
+            contacts = contacts.filter(contact => contact.id != id);
+            await writeFile('./contacts.json', JSON.stringify(contacts, null, 2), 'utf8');
+            return h.response(contacts).code(200);
         }
     }
 });
