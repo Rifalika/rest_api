@@ -1,16 +1,16 @@
-[
+
     {
         "id": 1,
-        "author": "Suzanne Collins",
-        "title": "The Hunger Games (The Hunger Games, #1)"
+        "name": "Susan Abraham",
+        "address": "Bandung, Jawa Barat"
     },
     {
         "id": 2,
-        "author": "William Golding",
-        "title": "Lord of the ÏFlies"
+        "name": "Surya William",
+        "address": "Bogor, Jawa Barat"
     },
     {
         "id": 3,
-        "author": "Harper Lee",
-        "title": "To Kill a Mockingbird"
+        "name": "Shaeron Lee",
+        "address": "Cirebon, Jawa Barat"
     }]
